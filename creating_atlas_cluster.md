@@ -29,6 +29,7 @@ Enter a database name and a collection name, and then click the Create button.
 Confirm that your new database is listed in the left panel. To add another collection to your database, click "Create Collection."
 
 
+
 ![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/a2b162f7-a177-419c-8d07-9f5eb7371dcb)
 
 
@@ -38,9 +39,9 @@ Enter a new collection name, and then click the Create button.
 ![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/91593454-bf97-47fa-b27b-c0e4c9b938b7)
 
 
-To insert a document, select the collection where you want to insert it and then click "Insert Document."
 
 ![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/c12b412f-72a0-4585-b8ad-235472ed4425)
+To insert a document, select the collection where you want to insert it and then click "Insert Document."
 
 
 
