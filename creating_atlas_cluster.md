@@ -4,47 +4,46 @@ atlas auth register
 
 From the left panel in Atlas Data Explorer, click "Databases."
 
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/d16eac2e-4109-40f4-a666-5aae33ff47d0)
 
-![bgkf6t7e0jql-011](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/d2de6dd3-eb07-48db-be90-b4bf3ebe76b0)
 
 
 Click "Browse Collections."
 
-![rq9tdzng9mhd-02](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/ab4966a3-a88a-4e4b-ad77-8a65fed3c7f4)
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/a5baea0f-a1c6-4946-a5fd-6e8d76c8a125)
 
 
 
 Click "Create Database."
 
-![est708ar3hrz-05](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/ba767c2f-5706-4c67-b95e-a24523694043)
 
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/7eaf60be-bc71-4145-9259-875760cbdd71)
 
 
 Enter a database name and a collection name, and then click the Create button.
 
 
-![lx381cnxia7r-06](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/bd7bd515-e630-4dfe-a55e-80ffd06f7f73)
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/5fa9bd15-99ea-4dda-af9b-ac90986aafd2)
 
 
 Confirm that your new database is listed in the left panel. To add another collection to your database, click "Create Collection."
 
-![woh9g9lyh1j8-07](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/f578f4be-b35c-4caf-88a9-2bdff69ea1f9)
 
 
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/a2b162f7-a177-419c-8d07-9f5eb7371dcb)
 
 
 Enter a new collection name, and then click the Create button.
 
-![u72ufkl430ns-08](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/03d0cc25-5ba3-4a12-888a-97a6cc2e3293)
+
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/91593454-bf97-47fa-b27b-c0e4c9b938b7)
 
 
 
-
+![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/c12b412f-72a0-4585-b8ad-235472ed4425)
 To insert a document, select the collection where you want to insert it and then click "Insert Document."
 
-![yjpv1jeuopzl-09](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/cf1825dc-c060-4d57-ac94-323936d19947)
 
 
 Enter your document, and then click the Insert button.  
 ![image](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/e8791332-bbe0-4d6d-a57b-67f052bb8910)
-![c5z9svxfb1b6-10](https://github.com/tentaclepurple/MongoDB_python_developer/assets/116112114/182aefac-3e09-4c76-b130-7c85f838ae8e)
