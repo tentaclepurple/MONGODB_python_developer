@@ -1,3 +1,6 @@
+Documentation
+https://www.mongodb.com/docs/?_ga=2.258129226.1937325540.1695593215-1827288128.1693038344
+
 COMONLY USED COMMANDS
     
     getMongo                                   Returns the current database connection
