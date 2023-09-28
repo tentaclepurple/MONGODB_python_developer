@@ -55,3 +55,40 @@ db.podcasts.updateOne(
   { _id: ObjectId("5e8f8f8f8f8f8f8f8f8f8f8") },
   { $push: { hosts: "Nic Raboy" } }
 )
+
+
+# Updating MongoDB Documents by Using findAndModify()
+
+The findAndModify() method is used to find and replace a single document in MongoDB. It accepts a filter document, a replacement document, and an optional options object. The following code shows an example:
+
+db.podcasts.findAndModify({
+  query: { _id: ObjectId("6261a92dfee1ff300dc80bf1") },
+  update: { $inc: { subscribers: 1 } },
+  new: true,
+})
+
+# Update many
+db.birds.updateMany(
+  {
+    common_name: {
+      $in: ["Blue Jay", "Grackle"],
+    },
+  },
+  {
+    $set: {
+      last_seen: ISODate("2022-01-01"),
+    },
+  }
+)
+
+# Deleting Documents in MongoDB
+To delete documents, use the deleteOne() or deleteMany() methods. Both methods accept a filter document and an options object.
+
+Delete One Document
+The following code shows an example of the deleteOne() method:
+
+db.podcasts.deleteOne({ _id: Objectid("6282c9862acb966e76bbf20a") })
+Delete Many Documents
+The following code shows an example of the deleteMany() method:
+
+db.podcasts.deleteMany({category: “crime”})
