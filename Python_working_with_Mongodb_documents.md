@@ -2,15 +2,15 @@
 Review the following code, which demonstrates how to insert a single document and multiple documents into a MongoDB collection by using PyMongo.
 
 
-Insert One Document
+## Insert One Document
 To insert a single document into a collection, append insert_one() to the collection object. The insert_one() method accepts a document as an argument and returns a result. In this example, we use the result to print the _id value of the inserted document.
 
 In the following code, the document that's being inserted is stored in a variable called new_account. This variable is declared just above the expression that inserts the document.
 
-# Get reference to 'bank' database
+### Get reference to 'bank' database
 db = client.bank
 
-# Get reference to 'accounts' collection
+### Get reference to 'accounts' collection
 accounts_collection = db.accounts
 
 new_account = {
@@ -21,7 +21,7 @@ new_account = {
     "last_updated": datetime.datetime.utcnow(),
 }
 
-# Write an expression that inserts the 'new_account' document into the 'accounts' collection.
+### Write an expression that inserts the 'new_account' document into the 'accounts' collection.
 result = accounts_collection.insert_one(new_account)
 
 document_id = result.inserted_id
@@ -34,10 +34,10 @@ To insert more than one document into a collection, append the insert_many() met
 
 In the following code, the accounts to be inserted are stored in a list variable called new_accounts. This variable is declared just above the expression that inserts the documents.
 
-# Get reference to 'bank' database
+### Get reference to 'bank' database
 db = client.bank
 
-# Get a reference to 'accounts' collection
+### Get a reference to 'accounts' collection
 accounts_collection = db.accounts
 
 new_accounts = [
@@ -55,7 +55,7 @@ new_accounts = [
     },
 ]
 
-# Write an expression that inserts the documents in 'new_accounts' into the 'accounts' collection.
+### Write an expression that inserts the documents in 'new_accounts' into the 'accounts' collection.
 result = accounts_collection.insert_many(new_accounts)
 
 document_ids = result.inserted_ids
