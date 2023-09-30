@@ -29,7 +29,7 @@ print(f"_id of inserted document: {document_id}")
 
 client.close()
 
-Insert Multiple Documents
+## Insert Multiple Documents
 To insert more than one document into a collection, append the insert_many() method to the collection object. The insert_many() method accepts an iterable of documents as an argument and returns a result. In this example, we use the result to print out the number of documents inserted and their _id values.
 
 In the following code, the accounts to be inserted are stored in a list variable called new_accounts. This variable is declared just above the expression that inserts the documents.
