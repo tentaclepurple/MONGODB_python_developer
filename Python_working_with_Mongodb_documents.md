@@ -64,6 +64,8 @@ print(f"_ids of inserted documents: {document_ids}")
 
 client.close()
 
+------
+
 # Querying a MongoDB Collection in Python Applications
 Review the following code, which demonstrates how to query MongoDB collections by using PyMongo.
 
@@ -113,3 +115,76 @@ for document in cursor:
 print("# of documents found: " + str(num_docs))
 
 client.close()
+
+
+-------
+
+# Updating Documents in Python Applications
+Review the following code, which demonstrates how to update documents in MongoDB by using PyMongo.
+
+
+## Update a Single Document
+To update a single document that matches a query, append update_one() to the collection object.
+
+The update_one() method has two required parameters: a filter document that matches the document to update, and an update document that specifies the modifications to apply. In this example, the filter is assigned to the document_to_update variable, and the update is assigned to the add_to_balance variable.
+
+update_one() returns a result. In this example, we use the result to print a confirmation of the number of documents that were updated.
+
+We also print the target document before and after the update. This way, we can confirm that the specified modification has been applied.
+
+Here's the code:
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get reference to 'accounts' collection
+accounts_collection = db.accounts
+
+### Filter
+document_to_update = {"_id": ObjectId("62d6e04ecab6d8e130497482")}
+
+### Update
+add_to_balance = {"$inc": {"balance": 100}}
+
+### Print original document
+pprint.pprint(accounts_collection.find_one(document_to_update))
+
+### Write an expression that adds to the target account balance by the specified amount.
+result = accounts_collection.update_one(document_to_update, add_to_balance)
+print("Documents updated: " + str(result.modified_count))
+
+### Print updated document
+pprint.pprint(accounts_collection.find_one(document_to_update))
+
+client.close()
+
+##Update Multiple Documents
+To update all documents that match a query, append update_many() to the collection object.
+
+The update_many() method also has two required parameters: a filter document that matches the document to update, and an update document that specifies the modifications to apply. In this example, the filter is assigned to the select_accounts variable, and the update is assigned to the set_field variable. Note that in this update, we define a new field and set its initial value.
+
+update_many() returns a result. In this example, we use the result to print out a confirmation of the number of documents that matched and were modified by the operation. We also print out one sample document after the update. This way, we can confirm that the specified modification has been applied.
+
+Here's the code:
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get reference to 'accounts' collection
+accounts_collection = db.accounts
+
+### Filter
+select_accounts = {"account_type": "savings"}
+
+### Update
+set_field = {"$set": {"minimum_balance": 100}}
+
+### Write an expression that adds a 'minimum_balance' field to each savings acccount and sets its value to 100.
+result = accounts_collection.update_many(select_accounts, set_field)
+
+print("Documents matched: " + str(result.matched_count))
+print("Documents updated: " + str(result.modified_count))
+pprint.pprint(accounts_collection.find_one(select_accounts))
+
+client.close()
+
