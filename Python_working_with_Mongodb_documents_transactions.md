@@ -27,13 +27,14 @@ Here's the code to create the transaction:
 client = MongoClient(MONGODB_URI)
 
 ### Step 1: Define the callback that specifies the sequence of operations to perform inside the transactions.
-def callback(
-    session,
-    transfer_id=None,
-    account_id_receiver=None,
-    account_id_sender=None,
-    transfer_amount=None,
-):
+
+    def callback(
+        session,
+        transfer_id=None,
+        account_id_receiver=None,
+        account_id_sender=None,
+        transfer_amount=None,
+    ):
 
     # Get reference to 'accounts' collection
     accounts_collection = session.client.bank.accounts
