@@ -188,3 +188,82 @@ pprint.pprint(accounts_collection.find_one(select_accounts))
 
 client.close()
 
+-------
+
+#  Deleting Documents in Python Applications
+Review the following code, which demonstrates how to delete documents in MongoDB by using PyMongo.
+
+
+## Delete a Single Document
+To delete a single document that matches a query, append delete_one() to the collection object.
+
+The delete_one() method has one required parameter, which is a filter that matches the document to delete. In the following example, the filter is assigned to the document_to_delete variable.
+
+Note that if delete_one() is called with an empty query filter document, then it matches and deletes the first document in the collection.
+
+delete_one() returns a result. In this example, we use the result to print the count of documents that were deleted.
+
+We also query for the target document before and after the delete operation as an additional confirmation.
+
+Here's the code:
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get a reference to the 'accounts' collection
+accounts_collection = db.accounts
+
+### Filter by ObjectId
+document_to_delete = {"_id": ObjectId("62d6e04ecab6d8e130497485")}
+
+### Search for document before delete
+print("Searching for target document before delete: ")
+pprint.pprint(accounts_collection.find_one(document_to_delete))
+
+### Write an expression that deletes the target account.
+result = accounts_collection.delete_one(document_to_delete)
+
+### Search for document after delete
+print("Searching for target document after delete: ")
+pprint.pprint(accounts_collection.find_one(document_to_delete))
+
+print("Documents deleted: " + str(result.deleted_count))
+
+client.close()
+
+## Delete Multiple Documents
+To delete all documents that match a query, append delete_many() to the collection object.
+
+The delete_many() method has one required parameter, which is a filter document that matches the document to delete. In the following example, the filter is assigned to the documents_to_delete variable.
+
+Note that if we call delete_many() with an empty query filter document, then all documents in the collection will be deleted.
+
+delete_many() returns a result. In this example, we use the result to print the count of documents that were deleted.
+
+We also query for a sample target document before and after the delete operation as an additional confirmation.
+
+Here's the code:
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get a reference to the 'accounts' collection
+accounts_collection = db.accounts
+
+### Filter for accounts with balance less than $2000
+documents_to_delete = {"balance": {"$lt": 2000}}
+
+### Search for sample document before delete
+print("Searching for sample target document before delete: ")
+pprint.pprint(accounts_collection.find_one(documents_to_delete))
+
+### Write an expression that deletes the target accounts.
+result = accounts_collection.delete_many(documents_to_delete)
+
+### Search for sample document after delete
+print("Searching for sample target document after delete: ")
+pprint.pprint(accounts_collection.find_one(documents_to_delete))
+
+print("Documents deleted: " + str(result.deleted_count))
+
+client.close()
