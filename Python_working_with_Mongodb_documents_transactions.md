@@ -92,8 +92,8 @@ Here's the code to create the transaction:
     # Step 2: Start a client session
     with client.start_session() as session:
 
-    # Step 3: Use with_transaction to start a transaction, execute the callback, and commit (or cancel on error)
-    session.with_transaction(callback_wrapper)
+        # Step 3: Use with_transaction to start a transaction, execute the callback, and commit (or cancel on error)
+        session.with_transaction(callback_wrapper)
 
 
     client.close()
