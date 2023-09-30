@@ -63,3 +63,53 @@ print("# of documents inserted: " + str(len(document_ids)))
 print(f"_ids of inserted documents: {document_ids}")
 
 client.close()
+
+# Querying a MongoDB Collection in Python Applications
+Review the following code, which demonstrates how to query MongoDB collections by using PyMongo.
+
+
+## Query for a Single Document
+To return a single document that matches a query, append find_one() to the collection object. The find_one() method can accept a filter argument that specifies the query to be performed. In this example, the filter is assigned to the document_to_find variable.
+
+find_one() returns the first document that matches the query, or it returns None if there are no matches. In this example, we use the result to print out the returned document.
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get a reference to the 'accounts' collection
+accounts_collection = db.accounts
+
+### Query by ObjectId
+document_to_find = {"_id": ObjectId("62d6e04ecab6d8e1304974ae")}
+
+### Write an expression that retrieves the document matching the query constraint in the 'accounts' collection.
+result = accounts_collection.find_one(document_to_find)
+pprint.pprint(result)
+
+client.close()
+
+## Query for Multiple Documents
+To return all documents that match a query, append find() to the collection object. The find() method can accept a filter argument that specifies the query to be performed. In this example, the filter is assigned to the documents_to_find variable.
+
+find() returns a Cursor instance, which allows us to iterate over all matching documents. In this example, we use the cursor to print out the documents matched by this query, as well as the total number of documents that are found.
+
+### Get reference to 'bank' database
+db = client.bank
+
+### Get a reference to the 'accounts' collection
+accounts_collection = db.accounts
+
+### Query
+documents_to_find = {"balance": {"$gt": 4700}}
+
+### Write an expression that selects the documents matching the query constraint in the 'accounts' collection.
+cursor = accounts_collection.find(documents_to_find)
+
+num_docs = 0
+for document in cursor:
+    num_docs += 1
+    pprint.pprint(document)
+    print()
+print("# of documents found: " + str(num_docs))
+
+client.close()
