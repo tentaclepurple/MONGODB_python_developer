@@ -80,14 +80,14 @@ client = MongoClient(MONGODB_URI)
     return
 
 
-def callback_wrapper(s):
-    callback(
-        s,
-        transfer_id="TR218721873",
-        account_id_receiver="MDB343652528",
-        account_id_sender="MDB574189300",
-        transfer_amount=100,
-    )
+    def callback_wrapper(s):
+        callback(
+            s,
+            transfer_id="TR218721873",
+            account_id_receiver="MDB343652528",
+            account_id_sender="MDB574189300",
+            transfer_amount=100,
+        )
 
 
 ### Step 2: Start a client session
