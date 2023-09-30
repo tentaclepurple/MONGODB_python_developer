@@ -23,10 +23,10 @@ Note that the general best practice for passing arbitrary arguments to the callb
 
 Here's the code to create the transaction:
 
-### Connect to MongoDB cluster with MongoClient
-client = MongoClient(MONGODB_URI)
+    # Connect to MongoDB cluster with MongoClient
+    client = MongoClient(MONGODB_URI)
 
-### Step 1: Define the callback that specifies the sequence of operations to perform inside the transactions.
+    # Step 1: Define the callback that specifies the sequence of operations to perform inside the transactions.
 
     def callback(
         session,
@@ -36,10 +36,10 @@ client = MongoClient(MONGODB_URI)
         transfer_amount=None,
     ):
 
-    # Get reference to 'accounts' collection
+        # Get reference to 'accounts' collection
     accounts_collection = session.client.bank.accounts
 
-    # Get reference to 'transfers' collection
+        # Get reference to 'transfers' collection
     transfers_collection = session.client.bank.transfers
 
     transfer = {
@@ -49,10 +49,10 @@ client = MongoClient(MONGODB_URI)
         "amount": {"$numberDecimal": transfer_amount},
     }
 
-    # Transaction operations
-    # Important: You must pass the session to each operation
+        # Transaction operations
+        # Important: You must pass the session to each operation
 
-    # Update sender account: subtract transfer amount from balance and add transfer ID
+        # Update sender account: subtract transfer amount from balance and add transfer ID
     accounts_collection.update_one(
         {"account_id": account_id_sender},
         {
@@ -62,7 +62,7 @@ client = MongoClient(MONGODB_URI)
         session=session,
     )
 
-    # Update receiver account: add transfer amount to balance and add transfer ID
+        # Update receiver account: add transfer amount to balance and add transfer ID
     accounts_collection.update_one(
         {"account_id": account_id_receiver},
         {
@@ -72,7 +72,7 @@ client = MongoClient(MONGODB_URI)
         session=session,
     )
 
-    # Add new transfer to 'transfers' collection
+        # Add new transfer to 'transfers' collection
     transfers_collection.insert_one(transfer, session=session)
 
     print("Transaction successful")
@@ -89,11 +89,11 @@ client = MongoClient(MONGODB_URI)
             transfer_amount=100,
         )
 
+    # Step 2: Start a client session
+    with client.start_session() as session:
 
-### Step 2: Start a client session
-with client.start_session() as session:
     # Step 3: Use with_transaction to start a transaction, execute the callback, and commit (or cancel on error)
     session.with_transaction(callback_wrapper)
 
 
-client.close()
+    client.close()
