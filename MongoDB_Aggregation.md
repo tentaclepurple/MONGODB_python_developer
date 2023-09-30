@@ -10,16 +10,16 @@ Aggregation pipeline: A series of stages completed on the data in order
 
 Structure of an Aggregation Pipeline
     db.collection.aggregate([
-        {
-            $stage1: {
-                { expression1 },
-                { expression2 }...
-            },
-            $stage2: {
-                { expression1 }...
+            {
+                $stage1: {
+                    { expression1 },
+                    { expression2 }...
+                },
+                $stage2: {
+                    { expression1 }...
+                }
             }
-        }
-    ])
+        ])
 
 # Using $match and $group Stages in a MongoDB Aggregation Pipeline
 Review the following sections, which show the code for the $match and $group aggregation stages.
