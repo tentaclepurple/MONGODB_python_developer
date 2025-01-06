@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  python:
+    container_name: python
+    image: python:3.10-slim
+    working_dir: /app
+    build:
+      context: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    environment:
+      - MONGO_URI=mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017/${MONGO_DATABASE}?authSource=admin
+    depends_on:
+      - mongodb
+    networks:
+      - test-network
+    restart: unless-stopped
+    command: tail -f /dev/null
+
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_test_volume:/data/db
+    env_file:
+      - .env
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGO_DATABASE}
+    networks:
+      - test-network
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - "6380:6379"
+    networks:
+      - test-network
+
+
+networks:
+  test-network:
+    name: test-network
+    driver: bridge
+
+
+volumes:
+  mongo_test_volume:
